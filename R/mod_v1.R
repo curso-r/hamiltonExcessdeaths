@@ -31,8 +31,8 @@ mod_v1_ui <- function(id){
           bs4Dash::column(
             width = 8,
             br(),
-            h5(div("Figure guide:")),
-            h6(div("The solid  line shows the 28-day centered sum of Notices Posted to RIP.ie for the selected region. The dashed line shows the average for the same period from 2015--2019. The dotted line shows the maximum for the same period.")),
+            h5(div(style = "color: black;", "Figure guide:")),
+            h6(div(style = "color: black;", "The solid  line shows the 28-day centered sum of Notices Posted to RIP.ie for the selected region. The dashed line shows the average for the same period from 2015--2019. The dotted line shows the maximum for the same period.")),
             plotOutput(ns("plot1")) %>% hamiltonCovid19::with_load_spinner()
             
           )
@@ -139,7 +139,7 @@ mod_v1_server <- function(input, output, session){
     if(slct == 'DUBLIN NORTH'|| slct == 'DUBLIN SOUTH'|| slct == 'INNER CITY DUBLIN' || slct == 'NORTH INNER DUBLIN'|| slct == 'SOUTH INNER DUBLIN'|| slct == 'WEST INNER DUBLIN' || slct == 'DUBLIN WEST'){
       
       p <- ggplot2::ggplot()+
-        ggplot2::geom_sf(data = ire %>% dplyr::filter(name %in% c("Dún Laoghaire–Rathdown","South Dublin","Dublin","Fingal")),
+        ggplot2::geom_sf(data = ire %>% dplyr::filter(name %in% c("Dun Laoghaire Rathdown","South Dublin","Dublin","Fingal")),
                          ggplot2::aes())+
         ggplot2::geom_sf(data = rk_grouped %>% dplyr::filter(Group == slct), ggplot2::aes(), fill = hamiltonCovid19::status_para_cor("primary"))+
         ggplot2::theme(axis.title=ggplot2::element_blank(),

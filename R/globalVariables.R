@@ -1,0 +1,1 @@
+utils::globalVariables(c("DOY", "Date", "Group", "Monthly_Notices", "Prev_Max", "Ref_Level", "Year", "name"))

@@ -1,0 +1,10 @@
+name: hamiltonexcessdeaths
+title:
+username:
+account: apmuhamilton
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3082898
+bundleId: 3775009
+url: https://apmuhamilton.shinyapps.io/hamiltonExcessdeaths/
+when: 1603469894.82891

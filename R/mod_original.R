@@ -135,7 +135,7 @@ mod_original_server <- function(input, output, session){
     if(slct == 'DUBLIN NORTH'|| slct == 'DUBLIN SOUTH'|| slct == 'INNER CITY DUBLIN' || slct == 'NORTH INNER DUBLIN'|| slct == 'SOUTH INNER DUBLIN'|| slct == 'WEST INNER DUBLIN' || slct == 'DUBLIN WEST'){
 
       p <- ggplot2::ggplot()+
-        ggplot2::geom_sf(data = ire %>% dplyr::filter(name %in% c("Dún Laoghaire–Rathdown","South Dublin","Dublin","Fingal")),
+        ggplot2::geom_sf(data = ire %>% dplyr::filter(name %in% c("Dun Laoghair Rathdown","South Dublin","Dublin","Fingal")),
                          ggplot2::aes()) +
         ggplot2::labs(title = "                     Dublin county")
     }

@@ -39,14 +39,17 @@ golem_add_external_resources <- function(){
     bundle_resources(
       path = app_sys('app/www'),
       app_title = 'hamiltonExcessdeaths'
-    ),
-    bundle_resources(
-      path = system.file("app/www",package = "hamiltonCovid19"),
-      app_title = 'hamiltonExcessdeaths'
     )
     # Add here other external resources
     # for example, you can add shinyalert::useShinyalert() 
   )
 
+  tags$head(
+    favicon(),
+    bundle_resources(
+      path = system.file("app/www",package = "hamiltonCovid19"),
+      app_title = 'hamiltonExcessdeaths'
+    )
+  )
 }
 
