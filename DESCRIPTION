@@ -9,7 +9,6 @@ Imports:
     golem,
     shiny,
     magrittr,
-    hamiltonCovid19 (>= 0.0.0.9000),
     bs4Dash,
     dplyr,
     fresh,
@@ -18,7 +17,8 @@ Imports:
     knitr,
     lubridate,
     rmarkdown,
-    pkgload
+    pkgload,
+    hamiltonThemes (>= 0.0.0.9000)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
@@ -26,5 +26,5 @@ URL: https://github.com/curso-r/hamiltonExcessdeaths
 BugReports: https://github.com/curso-r/hamiltonExcessdeaths/issues
 Depends: 
     R (>= 2.10)
-Remotes: 
-    curso-r/hamiltonCovid19
+Remotes:  
+    hamilton-institute/hamiltonThemes

@@ -14,7 +14,7 @@ mod_original_ui <- function(id){
       sidebar_collapsed = TRUE,
       sidebar_mini = FALSE,
       body = bs4Dash::bs4DashBody(
-        fresh::use_theme(hamiltonCovid19::theme_bs4Dash()),
+        hamiltonThemes:::bs4dash_distill_footer(),
         fluidRow(
           bs4Dash::column(
             width = 4,
@@ -31,8 +31,8 @@ mod_original_ui <- function(id){
           bs4Dash::column(
             width = 8,
             br(),
-            plotOutput(ns("plot1")) %>% hamiltonCovid19::with_load_spinner(),
-            plotOutput(ns("plot2")) %>% hamiltonCovid19::with_load_spinner()
+            plotOutput(ns("plot1")) %>% hamiltonThemes::distill_load_spinner(),
+            plotOutput(ns("plot2")) %>% hamiltonThemes::distill_load_spinner()
           )
         )
       )
@@ -146,7 +146,7 @@ mod_original_server <- function(input, output, session){
     }
 
     p + 
-      ggplot2::geom_sf(data = rk_grouped %>% dplyr::filter(Group == slct), ggplot2::aes(), fill = hamiltonCovid19::status_para_cor("primary"))+
+      ggplot2::geom_sf(data = rk_grouped %>% dplyr::filter(Group == slct), ggplot2::aes(), fill = hamiltonThemes:::distill_status_to_colour("primary"))+
       ggplot2::theme(axis.title.x=ggplot2::element_blank(),
                      axis.text.x=ggplot2::element_blank(),
                      axis.ticks.x=ggplot2::element_blank(),

@@ -14,7 +14,7 @@ mod_v1_ui <- function(id){
       sidebar_collapsed = TRUE,
       sidebar_mini = FALSE,
       body = bs4Dash::bs4DashBody(
-        fresh::use_theme(hamiltonCovid19::theme_bs4Dash()),
+        hamiltonThemes::use_bs4Dash_distill_theme(),
         fluidRow(
           bs4Dash::column(
             width = 4,
@@ -25,7 +25,7 @@ mod_v1_ui <- function(id){
               choices = get_regions(),
               selected = "MAYNOOTH"
             ),
-            plotOutput(ns("plot2")) %>% hamiltonCovid19::with_load_spinner()
+            plotOutput(ns("plot2")) %>% hamiltonThemes::distill_load_spinner()
             
           ),
           bs4Dash::column(
@@ -33,9 +33,10 @@ mod_v1_ui <- function(id){
             br(),
             h5(div(style = "color: black;", "Figure guide:")),
             h6(div(style = "color: black;", "The solid  line shows the 28-day centered sum of Notices Posted to RIP.ie for the selected region. The dashed line shows the average for the same period from 2015--2019. The dotted line shows the maximum for the same period.")),
-            plotOutput(ns("plot1")) %>% hamiltonCovid19::with_load_spinner()
+            plotOutput(ns("plot1")) %>% hamiltonThemes::distill_load_spinner()
             
-          )
+          ),
+          hamiltonThemes:::bs4dash_distill_footer()
         )
       )
     )
@@ -116,7 +117,7 @@ mod_v1_server <- function(input, output, session){
       ggplot2::theme(
         axis.text.x = ggplot2::element_text(angle = 90),
         legend.position = c(0.89, 0.85),
-        strip.background = ggplot2::element_rect(fill=hamiltonCovid19::status_para_cor("primary")),
+        strip.background = ggplot2::element_rect(fill = hamiltonThemes:::distill_status_to_colour("primary")),
         strip.text = ggplot2::element_text(color = "white", size = 11),
         panel.background = ggplot2::element_blank()
       )  +
@@ -141,7 +142,7 @@ mod_v1_server <- function(input, output, session){
       p <- ggplot2::ggplot()+
         ggplot2::geom_sf(data = ire %>% dplyr::filter(name %in% c("Dun Laoghaire Rathdown","South Dublin","Dublin","Fingal")),
                          ggplot2::aes())+
-        ggplot2::geom_sf(data = rk_grouped %>% dplyr::filter(Group == slct), ggplot2::aes(), fill = hamiltonCovid19::status_para_cor("primary"))+
+        ggplot2::geom_sf(data = rk_grouped %>% dplyr::filter(Group == slct), ggplot2::aes(), fill = hamiltonThemes:::distill_status_to_colour("primary"))+
         ggplot2::theme(axis.title=ggplot2::element_blank(),
                        axis.text=ggplot2::element_blank(),
                        axis.ticks=ggplot2::element_blank(),
@@ -153,7 +154,7 @@ mod_v1_server <- function(input, output, session){
       
       p <- ggplot2::ggplot()+
         ggplot2::geom_sf(data = ire,ggplot2::aes(), fill = "white") +
-        ggplot2::geom_sf(data = rk_grouped %>% dplyr::filter(Group == slct), ggplot2::aes(), fill = hamiltonCovid19::status_para_cor("primary")) +
+        ggplot2::geom_sf(data = rk_grouped %>% dplyr::filter(Group == slct), ggplot2::aes(), fill = hamiltonThemes:::distill_status_to_colour("primary")) +
         ggplot2::theme(axis.title.x=ggplot2::element_blank(),
                        axis.text=ggplot2::element_blank(),
                        axis.ticks=ggplot2::element_blank(),
