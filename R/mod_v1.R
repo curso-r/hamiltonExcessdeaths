@@ -35,10 +35,10 @@ mod_v1_ui <- function(id){
             h6(div(style = "color: black;", "The solid  line shows the 28-day centered sum of Notices Posted to RIP.ie for the selected region. The dashed line shows the average for the same period from 2015--2019. The dotted line shows the maximum for the same period.")),
             plotOutput(ns("plot1")) %>% hamiltonThemes::distill_load_spinner()
             
-          ),
-          hamiltonThemes:::bs4dash_distill_footer()
+          )
         )
-      )
+      ),
+      footer = hamiltonThemes:::bs4dash_distill_footer()
     )
   )
 }
